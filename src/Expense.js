@@ -1,7 +1,7 @@
 import "./expense.css";
 import React, { useState } from "react";
 
-class Expesnse {
+class Expense {
   constructor(date, desc, amount) {
     let months = [
       "January",
@@ -24,17 +24,18 @@ class Expesnse {
     this.year = date.getFullYear();
     this.day = date.getDate();
   }
-  
-  
 }
 
 var expenses = [
-  new Expesnse(new Date("2023-06-15"), "Burger", 2.00),
-  new Expesnse(new Date("2023-05-26"), "Laundry", 1.30),
-  new Expesnse(new Date("2023-06-18"), "Travel", 4.05),
-  new Expesnse(new Date("2023-08-08"), "KeyBoard", 3.56),
+  new Expense(new Date("2023-06-15"), "Burger", 2.0),
+  new Expense(new Date("2023-05-26"), "Laundry", 1.3),
+  new Expense(new Date("2023-06-18"), "Travel", 4.05),
+  new Expense(new Date("2023-08-08"), "KeyBoard", 3.56),
 ];
-var [new_expenses,setExpense] =[0,0]
+
+
+var [new_expenses, setExpense] = [0, 0];
+
 
 function ExpenseTotal() {
   var ExpenseTotal = 0;
@@ -52,22 +53,18 @@ function ExpenseTotal() {
 }
 
 
-function AddExpense() {
+function AddExpense(props) {
+    const click = (e) => {
+    e.preventDefault();
+    var desc = document.getElementById("desc").value;
+    var amount = document.getElementById("amount").value;
+    var date = document.getElementById("date").value;
+    setExpense(expenses.concat([new Expense(new Date(date), desc, amount)]));
+    expenses.push(new Expense(new Date(date), desc, amount));
 
-  // var expense = new Expesnse()
-  const click =(e,name)=>{
-    // e.preventDeafault()
-    var desc = document.getElementById("desc").value
-    var amount = document.getElementById("amount").value
-    var date = document.getElementById("date").value
-   setExpense(
-    expenses.concat([new Expesnse(new Date(date),desc,amount)])
-   )
-  //  expenses.push(new Expesnse(new Date(date),desc,amount))
-    
-    console.log(desc)
-    console.log(date)
-  }
+    console.log(desc);
+    console.log(date);
+  };
 
   return (
     <form className="ExpenseItem total input">
@@ -77,21 +74,21 @@ function AddExpense() {
       <input type="text" id="desc"></input>
       <input type="number" id="amount"></input>
       <div className="button">
-      <button onClick={(evt)=>click(evt,'profile')}>Add Expense</button>
-
+        <button onClick={click}>Add Expense</button>
       </div>
     </form>
   );
 }
 
 function ExpesnseItem(props) {
+  
   let expense = props.expense;
 
   return (
     <div className="ExpenseItem">
       <div className="ExpenseDate">
         <div className="month">{expense.month}</div>
-        <div className="year" >{expense.year}</div>
+        <div className="year">{expense.year}</div>
         <div className="day">{expense.day}</div>
       </div>
       <h2 className="ExpenseDesc">{expense.desc}</h2>
@@ -101,11 +98,15 @@ function ExpesnseItem(props) {
 }
 
 function Expenses() {
-  [new_expenses,setExpense]=useState(expenses)
+  [new_expenses, setExpense] = useState(expenses);
+  
+
   return (
     <div className="Expenses">
-      {new_expenses.map((expense) => <ExpesnseItem expense={expense} />)}
-      <AddExpense />     
+      {new_expenses.map((expense) => (
+        <ExpesnseItem key={expense.day} expense={expense} />
+      ))}
+      <AddExpense expenses={expenses} />
       <ExpenseTotal />
     </div>
   );
