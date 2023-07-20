@@ -20,7 +20,14 @@ var [new_expenses, setExpense] = [0, 0];
 
 
 function ExpesnseItem(props) {
-  
+
+  const Delete = (e)=>{
+    e.preventDefault()
+    expenses.splice(expenses.indexOf(expense),1)
+    console.log(expenses)
+    setExpense(expenses.concat([]))
+  }
+
   let expense = props.expense;
 
   return (
@@ -32,6 +39,8 @@ function ExpesnseItem(props) {
       </div>
       <h2 className="ExpenseDesc">{expense.desc}</h2>
       <h1>${expense.amount}</h1>
+      <img src={require("./delete.png") }  className="delete" onClick={Delete} />
+      {/* <button></button> */}
     </div>
   );
 }
@@ -43,10 +52,10 @@ function Expenses() {
   return (
     <div className="Expenses">
       {new_expenses.map((expense) => (
-        <ExpesnseItem key={expense.day} expense={expense} />
+        <ExpesnseItem key={expense.day} expense={expense} expenses={expenses} />
       ))}
-      <AddExpense expenses={expenses} />
       <ExpenseTotal />
+      <AddExpense expenses={expenses} />
     </div>
   );
 }

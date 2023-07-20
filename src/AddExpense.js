@@ -5,10 +5,12 @@ import Expense from "./Expense";
 function AddExpense(props) {
   const click = (e) => {
     e.preventDefault();
+    
     var desc = document.getElementById("desc").value;
     var amount = parseFloat(document.getElementById("amount").value )
     var date = document.getElementById("date").value;
     setExpense(expenses.concat([new Expense(new Date(date), desc, amount)]));
+
     expenses.push(new Expense(new Date(date), desc, amount));
 
     console.log(desc);

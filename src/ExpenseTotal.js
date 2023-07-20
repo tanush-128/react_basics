@@ -12,7 +12,7 @@ function ExpenseTotal() {
       <div className="ExpenseItem total">
         <div className="ExpenseDate"></div>
         <h2 className="ExpenseDesc">Total</h2>
-        <h1>${ExpenseTotal}</h1>
+        <h1>${ExpenseTotal.toFixed(2)}</h1>
       </div>
     );
   }
