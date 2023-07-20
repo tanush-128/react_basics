@@ -1,4 +1,4 @@
-import Expenses from './Expense'
+import {Expenses} from './ExpenseTab'
 import React from 'react';
 function App() {
   return (
