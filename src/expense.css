@@ -1,0 +1,74 @@
+.ExpenseItem{
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    width: 80%;
+    justify-content:space-evenly;
+    background-color: blueviolet;
+    color: white;
+    align-items: center;
+    border-radius: 15px;
+    margin: 10px ;
+    /* box-shadow: black 5px 4px 2px; */
+    box-shadow: #3a3434 3px 4px 5px 0px;
+    
+    /* text-align: center; */
+}
+
+
+.ExpenseDesc{
+    text-align: center;
+}
+
+
+.ExpenseDate{
+    background-color: white;
+    color: black;
+    width: 80px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    /* font-weight: 600; */
+    margin-left: 20px;
+    text-align: center;
+
+}
+.day{
+    font-size: larger;
+    font-weight: 900;
+}
+.year{
+font-size: smaller;
+}
+.month{
+font-size: large;
+font-weight: 600;
+}
+.total{
+    background-color: red;
+}
+.Expenses{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(68, 145, 233);
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+  }
+  .input{
+    padding: 10px;
+    gap: 20px;
+ }
+
+ input,button{
+    outline: none;
+    border: none;
+    padding: 12px;
+    border-radius: 35px;
+
+ }
+ .button{
+    grid-column: 1/4;
+    display: flex;
+    justify-content: center;
+
+ }
