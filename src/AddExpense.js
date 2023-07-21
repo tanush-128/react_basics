@@ -9,9 +9,24 @@ function AddExpense(props) {
     var desc = document.getElementById("desc").value;
     var amount = parseFloat(document.getElementById("amount").value )
     var date = document.getElementById("date").value;
-    setExpense(expenses.concat([new Expense(new Date(date), desc, amount)]));
+    
+ 
+    if(!date){
+      date = new Date()
+    }
+  
+    
+    if(amount>0){
+      // setExpense(expenses.concat([new Expense(new Date(date), desc, amount)]));
+      setExpense((prevExpenses)=>{
+        return [...prevExpenses,new Expense(new Date(date), desc, amount) ]
+      })
+      expenses.push(new Expense(new Date(date), desc, amount));
+    }
+    else{
+      alert('Amount must be greater than 0')
+    }
 
-    expenses.push(new Expense(new Date(date), desc, amount));
 
     console.log(desc);
     console.log(date);

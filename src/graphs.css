@@ -1,0 +1,40 @@
+.bg{
+    background-color: rgb(68, 145, 233) ;
+    color: white;
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    
+    border-radius: 15px;
+    margin: 40px 10px;
+    padding: 10px;
+
+ 
+}
+.barItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bar{
+    width: 15px;
+    height: 100px;
+    border-radius: 7.5px;
+    display: flex;
+   flex-direction: column;
+   background-color: beige;
+
+}
+
+.barFill{
+    background-color: blueviolet;
+
+    width: 15px;
+    /* height: 60px; */
+    border-radius:7.5px 7.5px 0px 0px;
+ 
+    /* align-items: end; */
+    justify-content:flex-end;
+
+}
